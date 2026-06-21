@@ -1,524 +1,1735 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TUAA Guwahati Chapter</title>
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-    }
-    body {
-      background: #f8fafc;
-      color: #0b2b3d;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    /* header / nav */
-    .navbar {
-      background: #0a2a3a;
-      color: white;
-      padding: 16px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    .navbar .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .logo i {
-      color: #f6b83e;
-    }
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      font-weight: 500;
-    }
-    .nav-links a {
-      color: #e6edf3;
-      text-decoration: none;
-      transition: 0.2s;
-      font-size: 0.95rem;
-      padding: 6px 0;
-      border-bottom: 2px solid transparent;
-    }
-    .nav-links a:hover {
-      color: #f6b83e;
-      border-bottom-color: #f6b83e;
-    }
-    .btn-outline-light {
-      border: 1px solid #f6b83e;
-      color: #f6b83e;
-      padding: 6px 18px;
-      border-radius: 40px;
-      transition: 0.2s;
-    }
-    .btn-outline-light:hover {
-      background: #f6b83e;
-      color: #0a2a3a !important;
-      border-color: #f6b83e;
-    }
-    /* sections */
-    section {
-      padding: 60px 0;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    section:last-of-type {
-      border-bottom: none;
-    }
-    .section-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 40px;
-      position: relative;
-      display: inline-block;
-    }
-    .section-title:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -10px;
-      width: 70px;
-      height: 4px;
-      background: #f6b83e;
-      border-radius: 4px;
-    }
-    .section-title-center {
-      text-align: center;
-    }
-    .section-title-center:after {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .bg-soft {
-      background: #f1f5f9;
-    }
-    /* cards */
-    .grid-2col {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-    .grid-3col {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-    }
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      transition: 0.25s ease;
-      border: 1px solid #eef2f6;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 32px rgba(0,0,0,0.08);
-    }
-    .card i {
-      font-size: 2.2rem;
-      color: #f6b83e;
-      margin-bottom: 16px;
-    }
-    .card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-    }
-    .exec-card {
-      text-align: center;
-      background: white;
-      border-radius: 24px;
-      padding: 24px 16px;
-      border: 1px solid #eef2f6;
-    }
-    .exec-card img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      background: #d9e2ec;
-      margin-bottom: 16px;
-      border: 4px solid #f6b83e;
-    }
-    .exec-card h4 {
-      font-size: 1.2rem;
-      margin-bottom: 4px;
-    }
-    .exec-card .role {
-      color: #f6b83e;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    /* gallery */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-    }
-    .gallery-item {
-      background: #d9e2ec;
-      border-radius: 20px;
-      aspect-ratio: 1/1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.8rem;
-      color: #2c4b5e;
-      transition: 0.2s;
-      cursor: default;
-      border: 2px solid transparent;
-    }
-    .gallery-item:hover {
-      border-color: #f6b83e;
-      transform: scale(1.02);
-    }
-    /* form */
-    .form-group {
-      margin-bottom: 20px;
-    }
-    .form-group label {
-      font-weight: 600;
-      display: block;
-      margin-bottom: 6px;
-    }
-    .form-control {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: 40px;
-      border: 1px solid #d0d9e4;
-      font-size: 1rem;
-      transition: 0.2s;
-      background: white;
-    }
-    .form-control:focus {
-      outline: none;
-      border-color: #f6b83e;
-      box-shadow: 0 0 0 3px rgba(246, 184, 62, 0.2);
-    }
-    .btn {
-      background: #0a2a3a;
-      border: none;
-      color: white;
-      padding: 12px 32px;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: 0.2s;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background: #1d4054;
-      transform: scale(1.02);
-    }
-    .btn-gold {
-      background: #f6b83e;
-      color: #0a2a3a;
-    }
-    .btn-gold:hover {
-      background: #e0a62e;
-    }
-    /* footer */
-    .footer {
-      background: #0a2a3a;
-      color: #cbd5e1;
-      padding: 40px 0 24px;
-    }
-    .footer .container {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .footer-social a {
-      color: #cbd5e1;
-      font-size: 1.6rem;
-      margin-right: 20px;
-      transition: 0.2s;
-    }
-    .footer-social a:hover {
-      color: #f6b83e;
-    }
-    .footer-bottom {
-      border-top: 1px solid #1f4055;
-      padding-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      font-size: 0.9rem;
-    }
-    /* responsive */
-    @media (max-width: 768px) {
-      .navbar .container {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-      }
-      .nav-links {
-        justify-content: center;
-        gap: 12px 18px;
-      }
-      .section-title {
-        font-size: 1.8rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TUAA Guwahati Chapter | Tezpur University Alumni Association</title>
+<meta name="description" content="Official website of the Tezpur University Alumni Association — Guwahati Chapter. Connecting alumni, building futures.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   TOKENS
+   ============================================ */
+:root{
+  --navy-deep:   #0b1a3d;
+  --navy:        #0e2350;
+  --navy-soft:   #16306e;
+  --gold:        #c9952f;
+  --gold-light:  #e3b969;
+  --gold-pale:   #f2dfb0;
+  --paper:       #faf7f0;
+  --paper-dim:   #f1ece0;
+  --ink:         #1c2333;
+  --ink-soft:    #4a5168;
+  --teal-wave:   #2c5d7c;
+  --white:       #ffffff;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Manrope', sans-serif;
+
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 28px;
+
+  --shadow-soft: 0 10px 40px -10px rgba(14,35,80,0.18);
+  --shadow-card: 0 4px 24px rgba(14,35,80,0.08);
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+}
+
+h1,h2,h3,h4{
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.15;
+}
+
+.eyebrow{
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.eyebrow::before{
+  content:'';
+  width: 28px;
+  height: 2px;
+  background: var(--gold);
+  display: inline-block;
+}
+
+.container{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+section{ position: relative; }
+
+.section-pad{ padding: 110px 0; }
+@media (max-width: 768px){ .section-pad{ padding: 72px 0; } }
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 30px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease);
+  white-space: nowrap;
+}
+.btn-gold{
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--navy-deep);
+  box-shadow: 0 8px 24px -8px rgba(201,149,47,0.6);
+}
+.btn-gold:hover{ transform: translateY(-3px); box-shadow: 0 14px 30px -8px rgba(201,149,47,0.7); }
+.btn-outline{
+  border: 1.5px solid rgba(255,255,255,0.5);
+  color: var(--white);
+  background: rgba(255,255,255,0.04);
+}
+.btn-outline:hover{ background: rgba(255,255,255,0.14); transform: translateY(-3px); }
+.btn-outline-navy{
+  border: 1.5px solid rgba(14,35,80,0.25);
+  color: var(--navy);
+}
+.btn-outline-navy:hover{ background: rgba(14,35,80,0.06); transform: translateY(-3px); }
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+.reveal{
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal.in{ opacity: 1; transform: translateY(0); }
+.reveal-stagger > * { transition-delay: calc(var(--i, 0) * 90ms); }
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.nav{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 18px 0;
+  transition: background .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease);
+}
+.nav.scrolled{
+  background: rgba(250,247,240,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 10px 0;
+  box-shadow: 0 2px 24px rgba(14,35,80,0.08);
+}
+.nav-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.nav-brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-brand img{
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  transition: width .4s var(--ease), height .4s var(--ease);
+}
+.nav.scrolled .nav-brand img{ width: 38px; height: 38px; }
+.nav-brand-text{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.nav-brand-text strong{
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  color: var(--white);
+  transition: color .4s var(--ease);
+  font-weight: 600;
+}
+.nav.scrolled .nav-brand-text strong{ color: var(--navy); }
+.nav-brand-text span{
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--gold-light);
+  font-weight: 600;
+}
+.nav.scrolled .nav-brand-text span{ color: var(--gold); }
+
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+.nav-links a{
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.88);
+  position: relative;
+  padding: 4px 0;
+  transition: color .3s;
+}
+.nav.scrolled .nav-links a{ color: var(--ink-soft); }
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  bottom:-2px; left:0;
+  width:0; height:2px;
+  background: var(--gold);
+  transition: width .3s var(--ease);
+}
+.nav-links a:hover{ color: var(--gold-light); }
+.nav.scrolled .nav-links a:hover{ color: var(--gold); }
+.nav-links a:hover::after{ width: 100%; }
+
+.nav-cta{ display:flex; align-items:center; gap:18px; }
+.nav-cta .btn{ padding: 10px 22px; font-size: 0.85rem; }
+
+.nav-toggle{
+  display:none;
+  width: 40px; height: 40px;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  gap: 5px;
+}
+.nav-toggle span{
+  width: 22px; height: 2px;
+  background: var(--white);
+  transition: all .3s;
+}
+.nav.scrolled .nav-toggle span{ background: var(--navy); }
+
+@media (max-width: 920px){
+  .nav-links{ display:none; }
+  .nav-cta .btn-outline{ display:none; }
+  .nav-toggle{ display:flex; }
+}
+
+.mobile-menu{
+  position: fixed;
+  inset: 0;
+  background: var(--navy-deep);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  transform: translateX(100%);
+  transition: transform .45s var(--ease);
+}
+.mobile-menu.open{ transform: translateX(0); }
+.mobile-menu-top{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom: 50px;
+}
+.mobile-close{ width:40px;height:40px;position:relative; }
+.mobile-close span{
+  position:absolute; top:50%; left:50%;
+  width:24px; height:2px; background:var(--white);
+}
+.mobile-close span:first-child{ transform: translate(-50%,-50%) rotate(45deg); }
+.mobile-close span:last-child{ transform: translate(-50%,-50%) rotate(-45deg); }
+.mobile-links{ display:flex; flex-direction:column; gap: 8px; }
+.mobile-links a{
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  color: var(--white);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.mobile-menu .btn{ margin-top: 36px; align-self:flex-start; }
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(ellipse 900px 600px at 78% 20%, rgba(201,149,47,0.16), transparent 60%),
+    radial-gradient(ellipse 1000px 800px at 15% 85%, rgba(44,93,124,0.35), transparent 60%),
+    linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-soft) 100%);
+  overflow: hidden;
+  padding-top: 110px;
+}
+
+.hero-tree{
+  position: absolute;
+  top: 0; right: -6%;
+  height: 100%;
+  width: 56%;
+  opacity: 0.16;
+  pointer-events: none;
+}
+.hero-tree svg{ width:100%; height:100%; }
+.hero-tree path, .hero-tree circle{
+  stroke: var(--gold-light);
+}
+
+.hero-waves{
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 140px;
+  pointer-events: none;
+}
+.hero-waves svg{ width:100%; height:100%; display:block; }
+
+.hero-inner{
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 60px 28px 140px;
+  width: 100%;
+}
+
+.hero-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px 8px 8px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: var(--gold-light);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.hero-badge img{ width:24px; height:24px; border-radius:50%; }
+
+.hero h1{
+  font-size: clamp(2.5rem, 5vw, 3.85rem);
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+}
+.hero h1 em{
+  font-style: italic;
+  font-weight: 500;
+  background: linear-gradient(100deg, var(--gold-light), var(--gold) 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-sanskrit{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--gold-light);
+  margin-bottom: 22px;
+  opacity: 0.95;
+}
+.hero-sanskrit span{
+  display:block;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+.hero p.lead{
+  font-size: 1.12rem;
+  color: rgba(255,255,255,0.78);
+  max-width: 520px;
+  margin-bottom: 38px;
+}
+
+.hero-actions{ display:flex; gap: 18px; flex-wrap: wrap; margin-bottom: 56px; }
+
+.hero-stats{
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.hero-stats .stat-num{
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  color: var(--gold-light);
+  font-weight: 600;
+  line-height:1;
+}
+.hero-stats .stat-label{
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 6px;
+  letter-spacing: 0.03em;
+}
+
+.hero-crest-wrap{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-crest-glow{
+  position: absolute;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,149,47,0.25), transparent 70%);
+  filter: blur(20px);
+  animation: pulse-glow 5s ease-in-out infinite;
+}
+@keyframes pulse-glow{
+  0%,100%{ transform: scale(1); opacity: 0.8; }
+  50%{ transform: scale(1.08); opacity: 1; }
+}
+.hero-crest{
+  position: relative;
+  width: min(380px, 80%);
+  border-radius: 50%;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+  animation: float-crest 6s ease-in-out infinite;
+}
+@keyframes float-crest{
+  0%,100%{ transform: translateY(0px); }
+  50%{ transform: translateY(-14px); }
+}
+
+@media (max-width: 980px){
+  .hero-inner{ grid-template-columns: 1fr; padding-bottom: 100px; text-align:center; }
+  .hero p.lead{ margin-left:auto; margin-right:auto; }
+  .hero-actions{ justify-content:center; }
+  .hero-stats{ justify-content:center; }
+  .hero-crest-wrap{ order:-1; margin-bottom: 10px; }
+  .hero-crest{ width: 240px; }
+  .hero-crest-glow{ width:320px; height:320px; }
+  .eyebrow{ justify-content:center; }
+}
+
+/* ============================================
+   MARQUEE / TICKER (announcements)
+   ============================================ */
+.ticker-bar{
+  background: var(--gold);
+  color: var(--navy-deep);
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+}
+.ticker-track{
+  display: flex;
+  gap: 60px;
+  white-space: nowrap;
+  padding: 12px 0;
+  animation: ticker 26s linear infinite;
+  width: max-content;
+}
+@keyframes ticker{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
+.ticker-track span{
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.ticker-track span::before{ content:'●'; font-size:0.5rem; }
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+.section-head{
+  max-width: 640px;
+  margin-bottom: 56px;
+}
+.section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+.section-head.center .eyebrow{ justify-content:center; }
+.section-head h2{
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  margin-bottom: 14px;
+}
+.section-head p{
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.section-tinted{ background: var(--paper-dim); }
+
+/* divider wave between sections */
+.wave-divider{
+  display:block;
+  width:100%;
+  height: 70px;
+  margin-top: -1px;
+}
+
+/* ============================================
+   ABOUT
+   ============================================ */
+.about-grid{
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 70px;
+  align-items: center;
+}
+.about-visual{
+  position: relative;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: linear-gradient(150deg, var(--navy), var(--navy-soft));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: var(--shadow-soft);
+}
+.about-visual .crest-bg{
+  width: 78%;
+  opacity: 0.97;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.35));
+}
+.about-visual::before{
+  content:'';
+  position:absolute; inset:0;
+  background: radial-gradient(circle at 30% 20%, rgba(201,149,47,0.18), transparent 55%);
+}
+.about-tag{
+  position: absolute;
+  bottom: 24px; left: 24px; right: 24px;
+  background: rgba(11,26,61,0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-m);
+  padding: 18px 22px;
+  color: var(--white);
+}
+.about-tag .estd{ font-family: var(--font-display); color: var(--gold-light); font-size: 1.3rem; }
+.about-tag p{ font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-top:2px; }
+
+.about-copy h3{ font-size: 1.5rem; margin-bottom: 16px; }
+.about-copy p{ color: var(--ink-soft); margin-bottom: 18px; }
+.about-copy p:last-of-type{ margin-bottom: 0; }
+
+.pillar-row{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 18px;
+  margin-top: 32px;
+}
+.pillar{
+  background: var(--white);
+  border-radius: var(--radius-m);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(14,35,80,0.06);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.pillar:hover{ transform: translateY(-5px); box-shadow: var(--shadow-soft); }
+.pillar .ic{
+  width: 42px; height:42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold-pale), var(--gold-light));
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom: 14px;
+  color: var(--navy);
+}
+.pillar h4{ font-size: 0.98rem; margin-bottom: 6px; }
+.pillar p{ font-size: 0.85rem; color: var(--ink-soft); }
+
+@media (max-width: 860px){
+  .about-grid{ grid-template-columns: 1fr; gap: 40px; }
+  .pillar-row{ grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================
+   VISION / MISSION
+   ============================================ */
+.vm-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.vm-card{
+  position: relative;
+  padding: 44px 38px;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+.vm-card.vision{
+  background: linear-gradient(155deg, var(--navy-deep), var(--navy-soft));
+  color: var(--white);
+}
+.vm-card.mission{
+  background: var(--white);
+  border: 1px solid rgba(14,35,80,0.08);
+  box-shadow: var(--shadow-card);
+}
+.vm-card .vm-icon{
+  width: 56px; height:56px;
+  border-radius: 16px;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom: 22px;
+}
+.vm-card.vision .vm-icon{ background: rgba(201,149,47,0.18); color: var(--gold-light); }
+.vm-card.mission .vm-icon{ background: var(--gold-pale); color: var(--navy); }
+.vm-card h3{ font-size: 1.4rem; margin-bottom: 14px; }
+.vm-card.vision h3{ color: var(--white); }
+.vm-card p{ font-size: 0.98rem; }
+.vm-card.vision p{ color: rgba(255,255,255,0.78); }
+.vm-card.mission p{ color: var(--ink-soft); }
+.vm-card ul{ margin-top: 18px; display:flex; flex-direction:column; gap:10px; }
+.vm-card li{
+  display:flex; align-items:flex-start; gap:10px;
+  font-size: 0.92rem;
+}
+.vm-card.vision li{ color: rgba(255,255,255,0.85); }
+.vm-card.mission li{ color: var(--ink-soft); }
+.vm-card li .dot{
+  width:6px; height:6px; border-radius:50%;
+  background: var(--gold);
+  margin-top: 8px;
+  flex-shrink:0;
+}
+
+@media (max-width: 860px){ .vm-grid{ grid-template-columns: 1fr; } }
+
+/* ============================================
+   EXECUTIVE COMMITTEE
+   ============================================ */
+.ec-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+.ec-card{
+  background: var(--white);
+  border-radius: var(--radius-m);
+  padding: 30px 26px;
+  text-align: center;
+  border: 1px solid rgba(14,35,80,0.06);
+  box-shadow: var(--shadow-card);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.ec-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow-soft); }
+.ec-avatar{
+  width: 92px; height: 92px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  background: linear-gradient(150deg, var(--navy), var(--navy-soft));
+  display:flex; align-items:center; justify-content:center;
+  color: var(--gold-light);
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  border: 3px solid var(--gold-pale);
+}
+.ec-card h4{ font-size: 1.05rem; margin-bottom: 4px; }
+.ec-role{
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.ec-card .ec-name-placeholder{
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  font-style: italic;
+}
+.ec-more{
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 6px;
+}
+
+@media (max-width: 920px){ .ec-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 600px){ .ec-grid{ grid-template-columns: 1fr; } }
+
+/* ============================================
+   EVENTS
+   ============================================ */
+.events-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+.event-card{
+  background: var(--white);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  border: 1px solid rgba(14,35,80,0.06);
+  box-shadow: var(--shadow-card);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.event-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow-soft); }
+.event-top{
+  height: 130px;
+  background: linear-gradient(135deg, var(--navy), var(--teal-wave));
+  position: relative;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  overflow:hidden;
+}
+.event-top svg{ width:54px; height:54px; color: var(--gold-light); opacity:0.9; }
+.event-date-chip{
+  position:absolute;
+  top:14px; left:14px;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 6px 12px;
+  text-align:center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
+.event-date-chip .d{ font-family: var(--font-display); font-size:1.15rem; color:var(--navy); line-height:1; font-weight:700;}
+.event-date-chip .m{ font-size:0.62rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--gold); font-weight:700; }
+.event-body{ padding: 22px; }
+.event-cat{
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--teal-wave);
+  margin-bottom: 8px;
+  display:block;
+}
+.event-body h4{ font-size: 1.05rem; margin-bottom: 8px; }
+.event-body p{ font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 14px; }
+.event-meta{ display:flex; align-items:center; gap:8px; font-size:0.8rem; color: var(--ink-soft); }
+
+@media (max-width: 920px){ .events-grid{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px){ .events-grid{ grid-template-columns: 1fr; } }
+
+/* ============================================
+   NEWS
+   ============================================ */
+.news-list{ display:flex; flex-direction:column; gap: 0; }
+.news-item{
+  display:grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 26px;
+  align-items:center;
+  padding: 26px 0;
+  border-bottom: 1px solid rgba(14,35,80,0.08);
+  transition: background .3s;
+}
+.news-item:hover{ background: rgba(201,149,47,0.05); }
+.news-date{
+  font-family: var(--font-display);
+  color: var(--navy);
+}
+.news-date .num{ font-size:1.6rem; font-weight:700; line-height:1; }
+.news-date .mon{ font-size:0.72rem; color: var(--gold); text-transform:uppercase; letter-spacing:0.05em; font-weight:700; }
+.news-text h4{ font-size: 1.02rem; margin-bottom: 4px; }
+.news-text p{ font-size: 0.86rem; color: var(--ink-soft); }
+.news-arrow{
+  width: 38px; height:38px;
+  border-radius:50%;
+  border: 1.5px solid rgba(14,35,80,0.15);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+  transition: background .3s, border-color .3s, transform .3s;
+}
+.news-item:hover .news-arrow{ background: var(--gold); border-color: var(--gold); transform: rotate(45deg); }
+.news-item:hover .news-arrow svg{ color: var(--navy-deep); }
+
+@media (max-width: 640px){
+  .news-item{ grid-template-columns: 60px 1fr; }
+  .news-arrow{ display:none; }
+}
+
+/* ============================================
+   GALLERY
+   ============================================ */
+.gallery-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 170px;
+  gap: 14px;
+}
+.gallery-grid .g-item{
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(150deg, var(--navy-soft), var(--teal-wave));
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+}
+.gallery-grid .g-item:nth-child(1){ grid-column: span 2; grid-row: span 2; }
+.gallery-grid .g-item:nth-child(4){ grid-row: span 2; }
+.gallery-grid .g-item svg{ width:30px; height:30px; color: rgba(255,255,255,0.5); }
+.gallery-grid .g-item::after{
+  content: attr(data-label);
+  position:absolute; inset:auto 0 0 0;
+  padding: 10px 14px;
+  font-size: 0.74rem;
+  font-weight:600;
+  color: var(--white);
+  background: linear-gradient(to top, rgba(11,26,61,0.85), transparent);
+  opacity:0;
+  transform: translateY(8px);
+  transition: opacity .3s, transform .3s;
+}
+.gallery-grid .g-item:hover::after{ opacity:1; transform: translateY(0); }
+.gallery-grid .g-item:hover{ transform: scale(0.98); }
+.gallery-grid .g-item{ transition: transform .3s; }
+
+@media (max-width: 760px){
+  .gallery-grid{ grid-template-columns: repeat(2,1fr); grid-auto-rows: 140px; }
+  .gallery-grid .g-item:nth-child(1){ grid-column: span 2; grid-row: span 1; height: auto;}
+}
+
+/* ============================================
+   MEMBERSHIP
+   ============================================ */
+.member-wrap{
+  background: linear-gradient(160deg, var(--navy-deep), var(--navy-soft));
+  border-radius: var(--radius-l);
+  padding: 64px;
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+}
+.member-wrap::before{
+  content:'';
+  position:absolute;
+  top:-100px; right:-100px;
+  width: 380px; height:380px;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(201,149,47,0.18), transparent 70%);
+}
+.member-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  position:relative;
+  z-index:2;
+}
+.member-copy .eyebrow{ color: var(--gold-light); }
+.member-copy h2{ color: var(--white); font-size: clamp(1.8rem,3vw,2.3rem); margin-bottom:16px; }
+.member-copy p{ color: rgba(255,255,255,0.75); margin-bottom: 26px; }
+.member-benefits{ display:flex; flex-direction:column; gap:14px; }
+.member-benefits li{ display:flex; gap:12px; align-items:flex-start; font-size:0.92rem; color: rgba(255,255,255,0.85); }
+.member-benefits svg{ flex-shrink:0; color: var(--gold-light); margin-top:2px; }
+
+.member-form{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-m);
+  padding: 32px;
+  backdrop-filter: blur(6px);
+}
+.form-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+.form-field{ display:flex; flex-direction:column; gap:6px; }
+.form-field.full{ grid-column: 1/-1; }
+.form-field label{ font-size:0.78rem; color: rgba(255,255,255,0.65); font-weight:600; }
+.form-field input, .form-field select{
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--white);
+  font-size: 0.92rem;
+  font-family: inherit;
+}
+.form-field input::placeholder{ color: rgba(255,255,255,0.4); }
+.form-field input:focus, .form-field select:focus{
+  outline: none;
+  border-color: var(--gold-light);
+  background: rgba(255,255,255,0.12);
+}
+.form-field select option{ color: #000; }
+.member-form .btn{ width:100%; justify-content:center; margin-top: 6px; }
+
+@media (max-width: 900px){
+  .member-wrap{ padding: 40px 26px; }
+  .member-grid{ grid-template-columns:1fr; gap: 36px; }
+  .form-row{ grid-template-columns:1fr; }
+}
+
+/* ============================================
+   ACHIEVEMENTS
+   ============================================ */
+.ach-grid{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 26px;
+}
+.ach-card{
+  background: var(--paper);
+  border: 1px solid rgba(14,35,80,0.08);
+  border-radius: var(--radius-m);
+  padding: 28px;
+  position:relative;
+}
+.ach-card .quote-mark{
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--gold-pale);
+  line-height:1;
+  margin-bottom: 6px;
+}
+.ach-card h4{ font-size:1.02rem; margin-bottom:6px; }
+.ach-card .ach-role{ font-size:0.8rem; color:var(--gold); font-weight:700; margin-bottom:12px; display:block; }
+.ach-card p{ font-size:0.9rem; color:var(--ink-soft); }
+
+@media (max-width: 920px){ .ach-grid{ grid-template-columns:1fr; } }
+
+/* ============================================
+   CONTACT
+   ============================================ */
+.contact-grid{
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 50px;
+}
+.contact-info-card{
+  background: var(--white);
+  border: 1px solid rgba(14,35,80,0.08);
+  border-radius: var(--radius-m);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+}
+.contact-row{
+  display:flex; gap:16px; align-items:flex-start;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(14,35,80,0.07);
+}
+.contact-row:last-child{ border-bottom:none; padding-bottom:0; }
+.contact-row:first-child{ padding-top:0; }
+.contact-row .ic{
+  width: 42px; height:42px;
+  border-radius:12px;
+  background: var(--gold-pale);
+  color: var(--navy);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.contact-row h4{ font-size:0.92rem; margin-bottom:3px; }
+.contact-row p, .contact-row a{ font-size:0.86rem; color: var(--ink-soft); }
+.social-row{ display:flex; gap:12px; margin-top:24px; }
+.social-row a{
+  width:40px; height:40px;
+  border-radius:50%;
+  background: var(--navy);
+  color: var(--white);
+  display:flex; align-items:center; justify-content:center;
+  transition: background .3s, transform .3s;
+}
+.social-row a:hover{ background: var(--gold); transform: translateY(-3px); color: var(--navy-deep); }
+
+.contact-form-card{
+  background: var(--white);
+  border: 1px solid rgba(14,35,80,0.08);
+  border-radius: var(--radius-m);
+  padding: 36px;
+  box-shadow: var(--shadow-card);
+}
+.contact-form-card .form-field label{ color: var(--ink-soft); }
+.contact-form-card .form-field input,
+.contact-form-card .form-field textarea{
+  background: var(--paper);
+  border: 1px solid rgba(14,35,80,0.12);
+  border-radius: 10px;
+  padding: 13px 14px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  color: var(--ink);
+}
+.contact-form-card .form-field textarea{ resize: vertical; min-height: 110px; }
+.contact-form-card .form-field input:focus,
+.contact-form-card .form-field textarea:focus{
+  outline:none; border-color: var(--gold);
+}
+.contact-form-card .btn{ margin-top:6px; }
+
+@media (max-width: 900px){ .contact-grid{ grid-template-columns:1fr; } }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer{
+  background: var(--navy-deep);
+  color: rgba(255,255,255,0.7);
+  padding: 70px 0 30px;
+  position: relative;
+}
+.footer-top{
+  display:grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+  gap: 40px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-brand{ display:flex; gap:14px; margin-bottom:18px; }
+.footer-brand img{ width:50px; height:50px; border-radius:50%; }
+.footer-brand strong{ font-family: var(--font-display); color: var(--white); font-size:1.05rem; display:block; }
+.footer-brand span{ font-size:0.76rem; color: var(--gold-light); }
+.footer-col p.lead-small{ font-size:0.86rem; max-width: 280px; }
+.footer-col h5{
+  color: var(--white);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+.footer-col ul{ display:flex; flex-direction:column; gap:11px; }
+.footer-col a{ font-size:0.88rem; transition: color .25s, padding-left .25s; }
+.footer-col a:hover{ color: var(--gold-light); padding-left: 4px; }
+.footer-newsletter{ display:flex; gap:0; margin-top:8px; }
+.footer-newsletter input{
+  flex:1;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-right:none;
+  border-radius: 10px 0 0 10px;
+  padding: 11px 14px;
+  color:var(--white);
+  font-size:0.85rem;
+  font-family:inherit;
+}
+.footer-newsletter input::placeholder{ color: rgba(255,255,255,0.4); }
+.footer-newsletter button{
+  background: var(--gold);
+  color: var(--navy-deep);
+  padding: 0 18px;
+  border-radius: 0 10px 10px 0;
+  font-weight:700;
+  font-size:0.85rem;
+}
+.footer-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top: 26px;
+  font-size: 0.8rem;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.footer-bottom a{ color: rgba(255,255,255,0.55); }
+.footer-bottom a:hover{ color: var(--gold-light); }
+
+@media (max-width: 860px){
+  .footer-top{ grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+@media (max-width: 540px){
+  .footer-top{ grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   BACK TO TOP
+   ============================================ */
+.back-top{
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 48px; height:48px;
+  border-radius:50%;
+  background: var(--navy);
+  color: var(--gold-light);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow: 0 10px 30px rgba(14,35,80,0.35);
+  opacity:0; visibility:hidden;
+  transform: translateY(10px);
+  transition: all .35s var(--ease);
+  z-index: 900;
+}
+.back-top.show{ opacity:1; visibility:visible; transform:translateY(0); }
+.back-top:hover{ background: var(--gold); color: var(--navy-deep); }
+
+/* ============================================
+   UTILITY
+   ============================================ */
+.text-center{ text-align:center; }
+.mt-48{ margin-top:48px; }
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="navbar">
-  <div class="container">
-    <div class="logo">
-      <i class="fas fa-university"></i> TUAA Guwahati
-    </div>
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">
+      <img src="logo.jpeg" alt="TUAA Guwahati Chapter Crest">
+      <div class="nav-brand-text">
+        <strong>TUAA Guwahati</strong>
+        <span>ALUMNI ASSOCIATION</span>
+      </div>
+    </a>
     <div class="nav-links">
       <a href="#home">Home</a>
       <a href="#about">About</a>
-      <a href="#exec">Committee</a>
-      <a href="#members">Members</a>
+      <a href="#committee">Committee</a>
       <a href="#events">Events</a>
       <a href="#gallery">Gallery</a>
+      <a href="#news">News</a>
       <a href="#contact">Contact</a>
-      <a href="#register" class="btn-outline-light"><i class="fas fa-user-plus"></i> Register</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#membership" class="btn btn-outline">Member Login</a>
+      <a href="#membership" class="btn btn-gold">Join Us</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
 
-<!-- HOME -->
-<section id="home">
-  <div class="container">
-    <div style="display: flex; flex-direction: column; gap: 20px; max-width: 800px;">
-      <span style="background: #f6b83e20; color: #a77b1e; padding: 6px 18px; border-radius: 40px; font-weight: 600; width: fit-content;">Tezpur University Alumni Association</span>
-      <h1 style="font-size: 3.2rem; font-weight: 800; line-height: 1.2;">Guwahati Chapter</h1>
-      <p style="font-size: 1.2rem; color: #2c4b5e; max-width: 600px;">Reconnect, reminisce, and rebuild — the official alumni network for Tezpur University graduates in Guwahati.</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 12px;">
-        <a href="#events" class="btn btn-gold"><i class="fas fa-calendar-check"></i> Upcoming events</a>
-        <a href="#register" class="btn" style="background: #0a2a3a;"><i class="fas fa-id-card"></i> Join chapter</a>
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <div class="nav-brand">
+      <img src="logo.jpeg" alt="TUAA Guwahati Chapter Crest">
+      <div class="nav-brand-text">
+        <strong style="color:#fff;">TUAA Guwahati</strong>
+        <span>ALUMNI ASSOCIATION</span>
       </div>
     </div>
-    <!-- latest updates -->
-    <div style="margin-top: 48px; background: white; border-radius: 24px; padding: 28px 32px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid #eef2f6;">
-      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-        <span style="background: #f6b83e; color: #0a2a3a; padding: 4px 16px; border-radius: 40px; font-weight: 700; font-size: 0.9rem;"><i class="fas fa-bullhorn"></i> Announcement</span>
-        <span><strong>Annual Alumni Meet 2026</strong> – Save the date: 15th August | <a href="#" style="color: #0a2a3a; font-weight: 600;">RSVP now</a></span>
-      </div>
-      <div style="margin-top: 12px; display: flex; gap: 24px; flex-wrap: wrap; color: #2c4b5e;">
-        <span><i class="far fa-clock"></i> Next EC meeting: 10 July 2026</span>
-        <span><i class="fas fa-trophy"></i> Chapter award: Best outreach 2025</span>
-      </div>
-    </div>
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">
+      <span></span><span></span>
+    </button>
   </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="bg-soft">
-  <div class="container">
-    <h2 class="section-title">About the Chapter</h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px;">
-      <div>
-        <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>TUAA Guwahati Chapter</strong> was formed in 2018 with the vision to connect Tezpur University alumni residing in the Guwahati region. We foster professional networking, social bonding, and community outreach.</p>
-        <ul style="list-style: none; padding: 0;">
-          <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #f6b83e; width: 24px;"></i> <strong>Formation:</strong> 15 March 2018</li>
-          <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #f6b83e; width: 24px;"></i> <strong>Objectives:</strong> Connect, support, and celebrate TU alumni.</li>
-          <li style="margin-bottom: 12px;"><i class="fas fa-check-circle" style="color: #f6b83e; width: 24px;"></i> <strong>MoA:</strong> Registered under Societies Act, 1860.</li>
-        </ul>
-        <a href="#" style="color: #0a2a3a; font-weight: 600;"><i class="fas fa-file-pdf"></i> Download MoA &amp; Bye-laws</a>
-      </div>
-      <div style="background: white; border-radius: 20px; padding: 24px; border: 1px solid #eef2f6;">
-        <h4><i class="fas fa-users" style="color: #f6b83e;"></i> Chapter strength</h4>
-        <p style="font-size: 2.2rem; font-weight: 700; margin: 8px 0;">340+</p>
-        <p>Active members across batches &amp; departments.</p>
-        <hr style="margin: 20px 0; border-color: #eef2f6;">
-        <p><i class="fas fa-map-pin" style="color: #f6b83e;"></i> Guwahati, Assam</p>
-        <p><i class="fas fa-calendar-alt"></i> Monthly meetups &amp; annual gala</p>
-      </div>
-    </div>
+  <div class="mobile-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#committee">Committee</a>
+    <a href="#events">Events</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
   </div>
-</section>
+  <a href="#membership" class="btn btn-gold">Join Us</a>
+</div>
 
-<!-- EXECUTIVE COMMITTEE -->
-<section id="exec">
-  <div class="container">
-    <h2 class="section-title section-title-center">Executive Committee</h2>
-    <div class="grid-3col" style="margin-top: 30px;">
-      <div class="exec-card"><img src="https://ui-avatars.com/api/?name=Anjali+Sharma&background=f6b83e&color=fff&size=120" alt="President"><h4>Anjali Sharma</h4><div class="role">President</div></div>
-      <div class="exec-card"><img src="https://ui-avatars.com/api/?name=Rahul+Borah&background=f6b83e&color=fff&size=120" alt="Vice President"><h4>Rahul Borah</h4><div class="role">Vice President</div></div>
-      <div class="exec-card"><img src="https://ui-avatars.com/api/?name=Deepika+Das&background=f6b83e&color=fff&size=120" alt="General Secretary"><h4>Deepika Das</h4><div class="role">General Secretary</div></div>
-      <div class="exec-card"><img src="https://ui-avatars.com/api/?name=Arjun+Nath&background=f6b83e&color=fff&size=120" alt="Joint Secretary"><h4>Arjun Nath</h4><div class="role">Joint Secretary</div></div>
-      <div class="exec-card"><img src="https://ui-avatars.com/api/?name=Priya+Barua&background=f6b83e&color=fff&size=120" alt="Treasurer"><h4>Priya Barua</h4><div class="role">Treasurer</div></div>
-      <div class="exec-card"><img src="https://ui-avatars.com/api/?name=EC+Members&background=f6b83e&color=fff&size=120" alt="EC Members"><h4>+ 6 Members</h4><div class="role">Executive Council</div></div>
-    </div>
-    <p style="text-align: center; margin-top: 24px;"><i class="fas fa-id-card"></i> Full committee profiles &amp; photographs available in the members' directory.</p>
+<!-- ============ HERO ============ -->
+<header class="hero" id="home">
+  <div class="hero-tree" aria-hidden="true">
+    <svg viewBox="0 0 500 700" fill="none">
+      <path d="M250 700 L250 380" stroke-width="3"/>
+      <path d="M250 450 Q180 400 140 320" stroke-width="2"/>
+      <path d="M250 420 Q320 370 360 290" stroke-width="2"/>
+      <path d="M250 400 Q210 320 150 260" stroke-width="2"/>
+      <path d="M250 390 Q290 310 350 250" stroke-width="2"/>
+      <path d="M140 320 Q100 280 90 220" stroke-width="1.5"/>
+      <path d="M360 290 Q400 250 410 190" stroke-width="1.5"/>
+      <path d="M150 260 Q120 200 130 140" stroke-width="1.5"/>
+      <path d="M350 250 Q380 190 370 130" stroke-width="1.5"/>
+      <circle cx="90" cy="220" r="5"/>
+      <circle cx="410" cy="190" r="5"/>
+      <circle cx="130" cy="140" r="5"/>
+      <circle cx="370" cy="130" r="5"/>
+      <circle cx="250" cy="380" r="5"/>
+      <circle cx="140" cy="320" r="4"/>
+      <circle cx="360" cy="290" r="4"/>
+    </svg>
   </div>
-</section>
 
-<!-- MEMBERS -->
-<section id="members" class="bg-soft">
-  <div class="container">
-    <h2 class="section-title">Members</h2>
-    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;">
-      <div>
-        <h4><i class="fas fa-address-book"></i> Member directory (sample)</h4>
-        <ul style="list-style: none; padding: 0; columns: 2; gap: 8px;">
-          <li>• Abhishek Dutta (CSE 2015)</li>
-          <li>• Bina Devi (ECE 2013)</li>
-          <li>• Chandan Kalita (ME 2016)</li>
-          <li>• Dolly Saikia (BT 2014)</li>
-          <li>• Eshan Gupta (MBA 2018)</li>
-          <li>• Farida Ahmed (ENG 2012)</li>
-          <li>• ... and 340+ more</li>
-        </ul>
-        <a href="#" class="btn" style="margin-top: 16px; display: inline-block;"><i class="fas fa-download"></i> Full directory (PDF)</a>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge reveal in">
+        <img src="logo.jpeg" alt="">
+        Estd. 2000 &nbsp;·&nbsp; Tezpur University
       </div>
-      <div style="background: white; border-radius: 20px; padding: 24px; border: 1px solid #eef2f6;">
-        <h4><i class="fas fa-user-edit"></i> Membership registration</h4>
-        <p>Join the Guwahati chapter – it's free!</p>
-        <a href="#register" class="btn btn-gold" style="width: 100%; text-align: center; margin-top: 12px;">Register now</a>
-        <hr style="margin: 18px 0;">
-        <p><i class="fas fa-graduation-cap"></i> Batch &amp; department details</p>
-        <p style="font-size: 0.95rem;">Update your profile, batch, and department for better networking.</p>
+      <h1 class="reveal in">Once a Tezpur<br>Alumnus, <em>always family.</em></h1>
+      <p class="hero-sanskrit reveal in">ज्ञानपरंपरा, भविष्यनिर्माणम्<span>"A tradition of knowledge, building the future" — the spirit behind everything we do in Guwahati.</span></p>
+      <p class="lead reveal in">The official home of the Tezpur University Alumni Association, Guwahati Chapter — connecting graduates across the city for mentorship, networking, and giving back to the institution that shaped us.</p>
+      <div class="hero-actions reveal in">
+        <a href="#membership" class="btn btn-gold">Become a Member</a>
+        <a href="#about" class="btn btn-outline">Learn About Us</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- EVENTS -->
-<section id="events">
-  <div class="container">
-    <h2 class="section-title section-title-center">Events &amp; Activities</h2>
-    <div class="grid-2col">
-      <div class="card"><i class="fas fa-handshake"></i><h3>Alumni Meet 2026</h3><p>Annual gala – 15 Aug 2026, Radisson Blu. <strong>RSVP open.</strong></p></div>
-      <div class="card"><i class="fas fa-chalkboard"></i><h3>Networking session</h3><p>Monthly meetup – every 2nd Friday at Guwahati Club.</p></div>
-      <div class="card"><i class="fas fa-tree"></i><h3>Social outreach</h3><p>Plantation drive &amp; blood donation camp – July 2026.</p></div>
-      <div class="card"><i class="fas fa-flag"></i><h3>Community outreach</h3><p>Scholarship fund for underprivileged students.</p></div>
-    </div>
-    <div style="margin-top: 30px; background: white; border-radius: 20px; padding: 24px; border: 1px solid #eef2f6;">
-      <p><i class="fas fa-images"></i> <strong>Event reports &amp; photos</strong> – <a href="#gallery">View gallery</a> or <a href="#">download reports</a>.</p>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="bg-soft">
-  <div class="container">
-    <h2 class="section-title section-title-center">Gallery</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item"><i class="fas fa-camera"></i></div>
-      <div class="gallery-item"><i class="fas fa-video"></i></div>
-      <div class="gallery-item"><i class="fas fa-calendar-alt"></i></div>
-      <div class="gallery-item"><i class="fas fa-trophy"></i></div>
-      <div class="gallery-item"><i class="fas fa-users"></i></div>
-      <div class="gallery-item"><i class="fas fa-star"></i></div>
-    </div>
-    <p style="text-align: center; margin-top: 24px;"><i class="fas fa-arrow-right"></i> Chapter milestones, event photos, and video recaps.</p>
-  </div>
-</section>
-
-<!-- NEWS & DOCUMENTS (combined) -->
-<section id="news-docs">
-  <div class="container">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-      <div>
-        <h3><i class="fas fa-newspaper"></i> News &amp; Announcements</h3>
-        <ul style="list-style: none; padding: 0;">
-          <li style="border-bottom: 1px solid #eef2f6; padding: 12px 0;">📢 <strong>EC meeting</strong> – 10 July 2026, 6 PM.</li>
-          <li style="border-bottom: 1px solid #eef2f6; padding: 12px 0;">🏆 <strong>Chapter award</strong> – Best alumni outreach 2025.</li>
-          <li style="padding: 12px 0;">📅 <strong>Save the date</strong> – Annual meet 15 Aug.</li>
-        </ul>
-      </div>
-      <div>
-        <h3><i class="fas fa-folder-open"></i> Documents</h3>
-        <ul style="list-style: none; padding: 0;">
-          <li style="border-bottom: 1px solid #eef2f6; padding: 8px 0;"><i class="fas fa-file-pdf"></i> <a href="#">MoA &amp; Bye-laws</a></li>
-          <li style="border-bottom: 1px solid #eef2f6; padding: 8px 0;"><i class="fas fa-file-pdf"></i> <a href="#">Meeting minutes (2025)</a></li>
-          <li style="border-bottom: 1px solid #eef2f6; padding: 8px 0;"><i class="fas fa-file-pdf"></i> <a href="#">Annual report 2025</a></li>
-          <li style="padding: 8px 0;"><i class="fas fa-file-pdf"></i> <a href="#">Membership form</a></li>
-        </ul>
-      </div>
-    </div>
-    <!-- Alumni Achievements -->
-    <div style="margin-top: 40px; background: white; border-radius: 20px; padding: 24px; border: 1px solid #eef2f6;">
-      <h4><i class="fas fa-award"></i> Alumni Achievements</h4>
-      <p>🏅 <strong>Dr. Manisha D.</strong> – Young Scientist Award 2026</p>
-      <p>🏅 <strong>Mr. Kaushik B.</strong> – 40 under 40 Business Leader</p>
-      <p>🏅 <strong>Ms. Rupali G.</strong> – Women in Tech Excellence</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT + REGISTER -->
-<section id="contact" class="bg-soft">
-  <div class="container">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
-      <div>
-        <h2 class="section-title">Contact Us</h2>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:info@tuaaguwahati.org">info@tuaaguwahati.org</a></p>
-        <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
-        <div class="footer-social" style="margin: 16px 0;">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <div class="hero-stats reveal in">
+        <div>
+          <div class="stat-num">25+</div>
+          <div class="stat-label">Years of Legacy</div>
         </div>
-        <p><i class="fas fa-whatsapp"></i> <a href="#">Join WhatsApp group</a></p>
-        <p><i class="fas fa-hands-helping"></i> <a href="#">Volunteer / Donate</a></p>
+        <div>
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Alumni in Guwahati</div>
+        </div>
+        <div>
+          <div class="stat-num">30+</div>
+          <div class="stat-label">Events Hosted</div>
+        </div>
       </div>
-      <div id="register">
-        <h3><i class="fas fa-user-plus"></i> Member Registration</h3>
-        <form>
-          <div class="form-group"><label>Full name</label><input type="text" class="form-control" placeholder="Your name"></div>
-          <div class="form-group"><label>Email</label><input type="email" class="form-control" placeholder="you@example.com"></div>
-          <div class="form-group"><label>Batch &amp; Department</label><input type="text" class="form-control" placeholder="e.g. CSE 2015"></div>
-          <button type="submit" class="btn btn-gold" style="width: 100%;"><i class="fas fa-paper-plane"></i> Register</button>
-        </form>
-        <p style="margin-top: 12px; font-size: 0.9rem;"><i class="fas fa-newspaper"></i> Subscribe to newsletter: <a href="#">click here</a></p>
+    </div>
+
+    <div class="hero-crest-wrap">
+      <div class="hero-crest-glow"></div>
+      <img src="logo.jpeg" alt="TUAA Guwahati Chapter Official Crest" class="hero-crest">
+    </div>
+  </div>
+
+  <div class="hero-waves" aria-hidden="true">
+    <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+      <path d="M0,80 C240,140 480,20 720,60 C960,100 1200,40 1440,80 L1440,140 L0,140 Z" fill="var(--paper)" opacity="1"/>
+      <path d="M0,100 C240,60 480,140 720,90 C960,40 1200,110 1440,70 L1440,140 L0,140 Z" fill="var(--paper)" opacity="0.6"/>
+    </svg>
+  </div>
+</header>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker-bar">
+  <div class="ticker-track" id="tickerTrack">
+    <span>Annual Alumni Meet 2026 — Registrations Opening Soon</span>
+    <span>New Executive Committee Election Notice Released</span>
+    <span>Membership Drive Now Open for 2026–27</span>
+    <span>Share Your Achievements for Our Newsletter</span>
+    <span>Annual Alumni Meet 2026 — Registrations Opening Soon</span>
+    <span>New Executive Committee Election Notice Released</span>
+    <span>Membership Drive Now Open for 2026–27</span>
+    <span>Share Your Achievements for Our Newsletter</span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section-pad" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <img src="logo.jpeg" alt="TUAA Guwahati Chapter Crest" class="crest-bg">
+        <div class="about-tag">
+          <div class="estd">Established 2000</div>
+          <p>Tezpur University Alumni Association — the parent body uniting graduates worldwide.</p>
+        </div>
+      </div>
+
+      <div class="about-copy">
+        <div class="eyebrow reveal">About the Chapter</div>
+        <h2 class="reveal" style="font-size:clamp(1.9rem,3vw,2.5rem);margin-bottom:18px;">A community built on shared roots</h2>
+        <h3 class="reveal" style="color:var(--gold);font-size:1.1rem;">How we came together</h3>
+        <p class="reveal">The TUAA Guwahati Chapter was formed by alumni of Tezpur University residing and working in and around Guwahati, who recognised the value of staying connected as a community long after graduation. As the largest city in the Northeast and home to a significant concentration of Tezpur University graduates, Guwahati was a natural base for a dedicated chapter of the parent association.</p>
+        <p class="reveal">The Chapter operates under a formally adopted <strong>Memorandum of Association (MoA)</strong>, which lays out its objectives, governance structure, and the framework for elections and activities. This document guides every decision the Chapter makes and is available for members to review in our Documents section.</p>
+
+        <div class="pillar-row">
+          <div class="pillar reveal">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h4>Reconnect</h4>
+            <p>Rebuild bonds with batchmates and seniors across years and departments.</p>
+          </div>
+          <div class="pillar reveal">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h4>Give Back</h4>
+            <p>Support current students and the university through outreach and mentorship.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
+<!-- ============ VISION & MISSION ============ -->
+<section class="section-pad section-tinted">
   <div class="container">
-    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;">
-      <div><span style="font-weight: 700; font-size: 1.2rem;">TUAA Guwahati Chapter</span> © 2026</div>
-      <div class="footer-social">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
+    <div class="section-head center reveal">
+      <div class="eyebrow">Why We Exist</div>
+      <h2>Vision &amp; Mission</h2>
+      <p>The values that have guided the Chapter since its formation, rooted in the objectives set out in our Memorandum of Association.</p>
+    </div>
+
+    <div class="vm-grid">
+      <div class="vm-card vision reveal">
+        <div class="vm-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Our Vision</h3>
+        <p>To be a thriving, well-connected community of Tezpur University alumni in Guwahati that actively contributes to the growth of its members and the lasting legacy of the university.</p>
+      </div>
+      <div class="vm-card mission reveal">
+        <div class="vm-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 14 9-5-9-5-9 5 9 5Z"/><path d="m12 14 6.16-3.42a12.1 12.1 0 0 1 .84 4.42c0 2-4 6-7 6s-7-4-7-6a12.1 12.1 0 0 1 .84-4.42L12 14Z"/></svg>
+        </div>
+        <h3>Our Mission</h3>
+        <ul>
+          <li><span class="dot"></span>Strengthen ties among alumni through regular meets and networking events</li>
+          <li><span class="dot"></span>Support current students through mentorship and outreach initiatives</li>
+          <li><span class="dot"></span>Celebrate and showcase the achievements of our alumni community</li>
+          <li><span class="dot"></span>Maintain transparent governance as defined in our MoA</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXECUTIVE COMMITTEE ============ -->
+<section class="section-pad" id="committee">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">Leadership</div>
+      <h2>Executive Committee</h2>
+      <p>The volunteers steering the Chapter's activities, elected to serve the alumni community of Guwahati.</p>
+    </div>
+
+    <div class="ec-grid reveal-stagger">
+      <div class="ec-card reveal" style="--i:0">
+        <div class="ec-avatar">P</div>
+        <h4>President</h4>
+        <div class="ec-role">Chapter Leadership</div>
+        <p class="ec-name-placeholder">Name to be added</p>
+      </div>
+      <div class="ec-card reveal" style="--i:1">
+        <div class="ec-avatar">VP</div>
+        <h4>Vice President</h4>
+        <div class="ec-role">Chapter Leadership</div>
+        <p class="ec-name-placeholder">Name to be added</p>
+      </div>
+      <div class="ec-card reveal" style="--i:2">
+        <div class="ec-avatar">GS</div>
+        <h4>General Secretary</h4>
+        <div class="ec-role">Administration</div>
+        <p class="ec-name-placeholder">Name to be added</p>
+      </div>
+      <div class="ec-card reveal" style="--i:3">
+        <div class="ec-avatar">JS</div>
+        <h4>Joint Secretary</h4>
+        <div class="ec-role">Administration</div>
+        <p class="ec-name-placeholder">Name to be added</p>
+      </div>
+      <div class="ec-card reveal" style="--i:4">
+        <div class="ec-avatar">T</div>
+        <h4>Treasurer</h4>
+        <div class="ec-role">Finance</div>
+        <p class="ec-name-placeholder">Name to be added</p>
+      </div>
+      <div class="ec-card reveal" style="--i:5">
+        <div class="ec-avatar">EM</div>
+        <h4>Executive Member</h4>
+        <div class="ec-role">General Body</div>
+        <p class="ec-name-placeholder">Name to be added</p>
+      </div>
+    </div>
+    <div class="ec-more reveal">
+      <a href="#contact" class="btn btn-outline-navy">View Full Committee &amp; Profiles</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVENTS ============ -->
+<section class="section-pad section-tinted" id="events">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">Stay Involved</div>
+      <h2>Events &amp; Activities</h2>
+      <p>From alumni meets to community outreach — here's what's happening across the Chapter.</p>
+    </div>
+
+    <div class="events-grid">
+      <div class="event-card reveal">
+        <div class="event-top">
+          <div class="event-date-chip"><div class="d">15</div><div class="m">Aug</div></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="event-body">
+          <span class="event-cat">Alumni Meet</span>
+          <h4>Annual Alumni Get-Together</h4>
+          <p>Our flagship yearly gathering bringing together alumni from every batch and department.</p>
+          <div class="event-meta">📍 Guwahati &nbsp;·&nbsp; Full Day</div>
+        </div>
+      </div>
+
+      <div class="event-card reveal">
+        <div class="event-top">
+          <div class="event-date-chip"><div class="d">22</div><div class="m">Sep</div></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+        </div>
+        <div class="event-body">
+          <span class="event-cat">Networking</span>
+          <h4>Professional Networking Evening</h4>
+          <p>An informal evening for alumni to connect across industries and explore collaboration.</p>
+          <div class="event-meta">📍 Guwahati &nbsp;·&nbsp; Evening</div>
+        </div>
+      </div>
+
+      <div class="event-card reveal">
+        <div class="event-top">
+          <div class="event-date-chip"><div class="d">10</div><div class="m">Oct</div></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg>
+        </div>
+        <div class="event-body">
+          <span class="event-cat">Outreach</span>
+          <h4>Community Outreach Drive</h4>
+          <p>Giving back to the city through community service and social welfare initiatives.</p>
+          <div class="event-meta">📍 Guwahati &nbsp;·&nbsp; Half Day</div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-48 reveal">
+      <a href="#" class="btn btn-outline-navy">View All Events &amp; Past Reports</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section-pad" id="gallery">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">Moments Together</div>
+      <h2>Photo &amp; Video Gallery</h2>
+      <p>A look back at our meets, milestones, and memories made along the way.</p>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <div class="g-item" data-label="Annual Meet 2025">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      </div>
+      <div class="g-item" data-label="Networking Night">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      </div>
+      <div class="g-item" data-label="Outreach Day">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      </div>
+      <div class="g-item" data-label="Chapter Milestones">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      </div>
+      <div class="g-item" data-label="Reunion 2024">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      </div>
+      <div class="g-item" data-label="Video Highlights">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+    </div>
+    <p class="text-center reveal" style="color:var(--ink-soft);font-size:0.88rem;margin-top:24px;">Placeholder gallery — upload your chapter's photos and videos here once available.</p>
+  </div>
+</section>
+
+<!-- ============ MEMBERSHIP ============ -->
+<section class="section-pad section-tinted" id="membership">
+  <div class="container">
+    <div class="member-wrap reveal">
+      <div class="member-grid">
+        <div class="member-copy">
+          <div class="eyebrow">Get Involved</div>
+          <h2>Join the TUAA Guwahati Chapter</h2>
+          <p>Membership is open to all former students of Tezpur University residing in or connected to Guwahati. Register below to stay updated on events, connect with fellow alumni, and contribute to the Chapter's growth.</p>
+          <ul class="member-benefits">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Priority invitations to alumni meets and networking events</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Access to the alumni directory and batch-wise connections</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Opportunities to mentor and support current students</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>A voice in Chapter elections and decision-making</li>
+          </ul>
+        </div>
+
+        <div class="member-form">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Full Name</label>
+              <input type="text" placeholder="Your full name">
+            </div>
+            <div class="form-field">
+              <label>Graduation Year</label>
+              <input type="text" placeholder="e.g. 2014">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Department</label>
+              <input type="text" placeholder="e.g. CSE">
+            </div>
+            <div class="form-field">
+              <label>Phone</label>
+              <input type="text" placeholder="+91">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field full">
+              <label>Email Address</label>
+              <input type="email" placeholder="you@example.com">
+            </div>
+          </div>
+          <button class="btn btn-gold">Submit Registration</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWS ============ -->
+<section class="section-pad" id="news">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">Latest Updates</div>
+      <h2>News &amp; Announcements</h2>
+      <p>Meeting notices, event announcements, and Chapter achievements — all in one place.</p>
+    </div>
+
+    <div class="news-list reveal">
+      <div class="news-item">
+        <div class="news-date"><div class="num">02</div><div class="mon">Jul</div></div>
+        <div class="news-text">
+          <h4>General Body Meeting Notice</h4>
+          <p>Notice for the upcoming general body meeting and agenda for discussion.</p>
+        </div>
+        <div class="news-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date"><div class="num">18</div><div class="mon">Jun</div></div>
+        <div class="news-text">
+          <h4>Membership Drive 2026–27 Now Open</h4>
+          <p>New and renewing members can now register for the upcoming Chapter year.</p>
+        </div>
+        <div class="news-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-date"><div class="num">05</div><div class="mon">Jun</div></div>
+        <div class="news-text">
+          <h4>Chapter Recognised for Community Outreach</h4>
+          <p>The Guwahati Chapter's outreach efforts were acknowledged at the parent association's annual review.</p>
+        </div>
+        <div class="news-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ALUMNI ACHIEVEMENTS ============ -->
+<section class="section-pad section-tinted">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">We're Proud Of</div>
+      <h2>Alumni Achievements</h2>
+      <p>Celebrating the accomplishments of Tezpur University graduates from our Chapter.</p>
+    </div>
+
+    <div class="ach-grid reveal-stagger">
+      <div class="ach-card reveal" style="--i:0">
+        <div class="quote-mark">"</div>
+        <h4>Excellence in Industry</h4>
+        <span class="ach-role">Member Accomplishment</span>
+        <p>Recognised for outstanding contribution and leadership within their professional field.</p>
+      </div>
+      <div class="ach-card reveal" style="--i:1">
+        <div class="quote-mark">"</div>
+        <h4>Outstanding Service Award</h4>
+        <span class="ach-role">Community Recognition</span>
+        <p>Honoured for sustained service to the Guwahati alumni community and beyond.</p>
+      </div>
+      <div class="ach-card reveal" style="--i:2">
+        <div class="quote-mark">"</div>
+        <h4>Academic Distinction</h4>
+        <span class="ach-role">Alumni Honour</span>
+        <p>Celebrated for achievements in higher education and research following graduation.</p>
+      </div>
+    </div>
+    <p class="text-center reveal" style="color:var(--ink-soft);font-size:0.88rem;margin-top:30px;">Placeholder entries — share your achievements with us to be featured here.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section-pad" id="contact">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow">Reach Out</div>
+      <h2>Contact Us</h2>
+      <p>Have a question, suggestion, or want to get involved? We'd love to hear from you.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info-card reveal">
+        <div class="contact-row">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+          <div><h4>Email</h4><a href="mailto:tuaaguwahati@gmail.com">tuaaguwahati@gmail.com</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
+          <div><h4>Phone</h4><p>+91 00000 00000</p></div>
+        </div>
+        <div class="contact-row">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h4>Location</h4><p>Guwahati, Assam, India</p></div>
+        </div>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.87v-6.98H7.9V12h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.8l-.4 2.9h-2.4v6.98A10 10 0 0 0 22 12Z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002ZM7 8.48H3V21h4ZM13.32 8.48H9.34V21h4v-6.65c0-3.7 4.79-4 4.79 0V21h4v-7.93c0-6.17-7.06-5.95-8.81-2.91Z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2Zm5.6 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.7-3-1.3-5-4.4-5.1-4.6-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1.1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.2.1.4.2.5.3.1.2.1.9-.1 1.6Z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="contact-form-card reveal">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-field">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field full">
+            <label>Subject</label>
+            <input type="text" placeholder="What is this about?">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field full">
+            <label>Message</label>
+            <textarea placeholder="Write your message here..."></textarea>
+          </div>
+        </div>
+        <button class="btn btn-gold">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <img src="logo.jpeg" alt="TUAA Guwahati Chapter Crest">
+          <div>
+            <strong>TUAA Guwahati Chapter</strong>
+            <span>Estd. 2000</span>
+          </div>
+        </div>
+        <p class="lead-small">The official online presence of the Tezpur University Alumni Association, Guwahati Chapter — connecting alumni, strengthening community, and building the future together.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#about">About the Chapter</a></li>
+          <li><a href="#committee">Executive Committee</a></li>
+          <li><a href="#events">Events &amp; Activities</a></li>
+          <li><a href="#gallery">Photo Gallery</a></li>
+          <li><a href="#news">News &amp; Announcements</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="#">Memorandum of Association</a></li>
+          <li><a href="#">Meeting Minutes</a></li>
+          <li><a href="#">Annual Reports</a></li>
+          <li><a href="#membership">Membership Form</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Stay Updated</h5>
+        <p class="lead-small">Subscribe for chapter news and event announcements.</p>
+        <div class="footer-newsletter">
+          <input type="email" placeholder="Your email">
+          <button>Join</button>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>Made with <i class="fas fa-heart" style="color: #f6b83e;"></i> for Tezpur University alumni</span>
-      <span><a href="#" style="color: #cbd5e1;">Privacy</a> · <a href="#" style="color: #cbd5e1;">Documents</a></span>
+      <span>© 2026 TUAA Guwahati Chapter. All rights reserved.</span>
+      <span>A chapter of the Tezpur University Alumni Association</span>
     </div>
   </div>
 </footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<script>
+// Navbar scroll state
+const nav = document.getElementById('nav');
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+  backTop.classList.toggle('show', window.scrollY > 600);
+});
+
+// Mobile menu
+const navToggle = document.getElementById('navToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+navToggle.addEventListener('click', () => mobileMenu.classList.add('open'));
+mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+// Back to top
+backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => io.observe(el));
+
+// Forms — placeholder submit handling
+document.querySelectorAll('.btn-gold').forEach(btn => {
+  if(btn.tagName === 'BUTTON'){
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = btn.closest('.member-form, .contact-form-card');
+      if(card){
+        btn.textContent = 'Thank you!';
+        setTimeout(()=>{ btn.textContent = card.classList.contains('member-form') ? 'Submit Registration' : 'Send Message'; }, 2200);
+      }
+    });
+  }
+});
+</script>
 
 </body>
 </html>
